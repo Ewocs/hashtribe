@@ -1,0 +1,23 @@
+{
+  "name": "hashtribe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @hashtribe/web dev",
+    "build": "pnpm --filter @hashtribe/web build",
+    "preview": "pnpm --filter @hashtribe/web preview",
+    "lint": "pnpm --filter @hashtribe/web lint",
+    "type-check": "pnpm --filter @hashtribe/web type-check",
+    "db:types": "supabase gen types typescript --local > packages/shared/src/types/database.types.ts",
+    "db:reset": "supabase db reset",
+    "db:migrate": "supabase migration up",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}

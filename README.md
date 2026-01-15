@@ -1,290 +1,309 @@
-# 🔷 DevCom — Project Scope Definition
+<div align="center">
 
-## 🎯 Product Mission
+# 🔷 HashTribe
 
-DevCom is a **verified developer credibility & collaboration platform** where:
+**A developer-first community and collaboration platform**
 
-* Developers build **proof-based profiles**
-* Companies host **competitions & hiring events**
-* Communities enable **real collaboration**, not noise
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.2-blue)](https://reactjs.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Latest-green)](https://supabase.com/)
 
----
+[Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [Roadmap](#-roadmap)
 
-## 👨‍💻 1. Developer Model (User Side)
-
-### 1.1 Identity & Profile
-
-**Core Features**
-
-* DevCom Account
-* Public developer profile
-* Username + bio + role
-* Tech stack auto-detection
-
-**Integrated Data Sources**
-
-* GitHub (mandatory)
-* LeetCode / HackerRank (optional in MVP)
-
-**Profile Displays**
-
-* Contribution heatmap
-* Skill graph
-* Activity timeline
-* DevCom Score (system-calculated)
+</div>
 
 ---
 
-### 1.2 Developer Reputation & Score
+## 🎯 About
 
-**Inputs**
+HashTribe (DevCom) is a **verified developer credibility & collaboration platform** where developers build proof-based profiles, join communities (Tribes), compete in coding challenges, and collaborate on real projects.
 
-* GitHub commits, PRs, repos
-* Coding platform stats
-* Competition performance
-* Project contributions
-* Community participation
+### Phase 1 MVP - Tribes System ✅
 
-**Outputs**
+This initial release focuses on the **Tribes** (community) system with:
 
-* Global rank
-* Skill-wise rank
-* Community reputation
-* Badge system
-
-> 🔒 No manual skill endorsements (anti-fake).
+- ✅ GitHub OAuth authentication
+- ✅ Create & manage Tribes (public/private)
+- ✅ Join/leave Tribes
+- ✅ Role-based permissions (Admin/Member)
+- ✅ Row Level Security (RLS) for data protection
+- ✅ Developer profiles linked to GitHub
+- 🔜 Topics & Discussions (coming soon)
+- 🔜 Competitions & Leaderboards (coming soon)
 
 ---
 
-### 1.3 Communities & Topics
+## ✨ Features
 
-**Developers Can**
+### Current (Phase 1)
 
-* Join communities
-* Create topics
-* Reply with code/solutions
-* Upvote based on reputation
+- **Authentication**: GitHub OAuth via Supabase Auth
+- **Tribes System**: Create and join developer communities
+- **Profiles**: Auto-generated from GitHub data
+- **Security**: Row Level Security (RLS) policies
+- **Responsive UI**: Dark theme, developer-centric design
 
-**Community Types**
+### Planned (Phase 2 & 3)
 
-* Tech-based
-* Project-based
-* College / org-based
-* Event-based (auto-created)
-
----
-
-### 1.4 Project Collaboration
-
-**Project Space**
-
-* Description & goals
-* Required roles
-* GitHub repo linking
-* Task board (basic)
-* Contributors list
-
-**Contribution Tracking**
-
-* Auto-sync from GitHub
-* Manual logs (verified by maintainers)
+See [SCOPE.md](SCOPE.md) for the complete product vision including:
+- Topics & Discussions
+- Competitions & Events
+- Leaderboards & Rankings
+- DevCom Score System
+- Company Accounts
+- Project Collaboration
 
 ---
 
-### 1.5 Developer Permissions
+## 🛠 Tech Stack
 
-Unlocked via reputation:
+### Frontend
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Zustand** - State management
+- **React Router** - Routing
 
-* Create communities
-* Moderate topics
-* Host open events
-* Feature projects
+### Backend
+- **Supabase** - Backend as a Service
+  - PostgreSQL database
+  - Authentication (GitHub OAuth)
+  - Row Level Security (RLS)
+  - Real-time subscriptions
 
----
-
-## 🏢 2. Company Model (Organization Side)
-
-### 2.1 Company Account
-
-**Profile Includes**
-
-* Company info & logo
-* Verified domain
-* Hiring focus areas
-* Past events history
-
-**Roles**
-
-* Admin
-* Recruiter
-* Event Manager
+### Monorepo
+- **pnpm workspaces** - Package management
+- **Shared package** - Types and utilities
 
 ---
 
-### 2.2 Talent Discovery
+## 🚀 Getting Started
 
-Companies can:
+### Prerequisites
 
-* View public developer profiles
-* Filter by:
+- **Node.js** 18+ ([nvm](https://github.com/nvm-sh/nvm) recommended)
+- **pnpm** 8+ (`npm install -g pnpm`)
+- **Supabase CLI** ([installation guide](https://supabase.com/docs/guides/cli))
+- **Git**
 
-  * Skills
-  * Rankings
-  * Event performance
-  * GitHub activity
-* Save shortlists
+### Installation
 
-> 🔒 Private contact only after dev opt-in.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/HashTribe.git
+   cd HashTribe
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Start Supabase locally**
+   ```bash
+   pnpm supabase:start
+   ```
+   
+   This will output your local Supabase credentials:
+   ```
+   API URL: http://localhost:54321
+   anon key: eyJh...
+   service_role key: eyJh...
+   ```
+
+4. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=http://localhost:54321
+   VITE_SUPABASE_ANON_KEY=your_anon_key_here
+   ```
+
+5. **Run database migrations**
+   ```bash
+   pnpm db:migrate
+   ```
+
+6. **Configure GitHub OAuth**
+   
+   a. Create a GitHub OAuth App:
+   - Go to https://github.com/settings/developers
+   - Click "New OAuth App"
+   - Set **Authorization callback URL**: `http://localhost:54321/auth/v1/callback`
+   - Copy the **Client ID** and **Client Secret**
+   
+   b. Add to Supabase:
+   - Open Supabase Studio: http://localhost:54323
+   - Go to **Authentication** → **Providers** → **GitHub**
+   - Enable GitHub and add your Client ID and Secret
+   - Save
+
+7. **Start the development server**
+   ```bash
+   pnpm dev
+   ```
+   
+   The app will open at http://localhost:5173
+
+### First Login
+
+1. Click "Continue with GitHub"
+2. Authorize the application
+3. You'll be redirected back and your profile will be auto-created
+4. Start creating Tribes!
 
 ---
 
-### 2.3 Branding & Visibility
-
-* Company page
-* Sponsored events
-* Featured challenges
-* Community sponsorships
-
----
-
-## 🏆 3. Competition & Event Hosting
-
-### 3.1 Event Types
-
-* Coding contests
-* Hiring challenges
-* Hackathons
-* Ideation / system design rounds
-
----
-
-### 3.2 Event Creation Flow (Company)
-
-1. Create event
-2. Set:
-
-   * Difficulty
-   * Skills tested
-   * Eligibility
-3. Choose:
-
-   * Online / Hybrid
-   * Individual / Team
-4. Publish
-
----
-
-### 3.3 Participation Flow (Developer)
-
-* Discover events
-* Register
-* Compete
-* Track rank in real time
-* Results auto-linked to profile
-
----
-
-### 3.4 Ranking & Scoring
-
-* Global leaderboard
-* Skill-wise leaderboard
-* Event-specific ranks
-
-**Scoring Inputs**
-
-* Accuracy
-* Time
-* Code quality (future)
-* Consistency
-
----
-
-## 🧱 4. Platform-Wide Systems
-
-### 4.1 DevCom Score Engine
-
-Weighted scoring:
+## 📁 Project Structure
 
 ```
-GitHub Activity       → 30%
-DSA Platforms         → 25%
-Competition Results   → 25%
-Projects & Collabs    → 15%
-Community Reputation  → 5%
+HashTribe/
+├── apps/
+│   └── web/                 # React frontend
+│       ├── src/
+│       │   ├── components/  # Reusable components
+│       │   ├── pages/       # Page components
+│       │   ├── stores/      # Zustand stores
+│       │   ├── lib/         # Utilities & config
+│       │   └── App.tsx      # Main app component
+│       └── package.json
+├── packages/
+│   └── shared/              # Shared types & utilities
+│       ├── src/
+│       │   ├── types/       # TypeScript types
+│       │   └── utils/       # Utility functions
+│       └── package.json
+├── supabase/
+│   ├── migrations/          # Database migrations
+│   ├── seed.sql             # Seed data
+│   └── config.toml          # Supabase config
+├── .env.example             # Environment template
+├── pnpm-workspace.yaml      # Workspace config
+└── package.json             # Root package
 ```
 
 ---
 
-### 4.2 Moderation & Trust
+## 🧪 Development
 
-* Reputation-gated actions
-* Community moderators
-* Automated spam detection
-* Report system
+### Available Scripts
 
----
+```bash
+# Development
+pnpm dev              # Start dev server
+pnpm build            # Build for production
+pnpm preview          # Preview production build
 
-### 4.3 Search & Discovery
+# Code Quality
+pnpm lint             # Run ESLint
+pnpm type-check       # Run TypeScript checks
 
-* Developers
-* Communities
-* Projects
-* Events
-* Companies
+# Database
+pnpm db:types         # Generate TypeScript types from DB
+pnpm db:reset         # Reset local database
+pnpm db:migrate       # Run migrations
 
----
+# Supabase
+pnpm supabase:start   # Start local Supabase
+pnpm supabase:stop    # Stop local Supabase
+```
 
-## 💰 5. Monetization Scope
+### Database Schema
 
-### For Companies
+Key tables:
+- `users` - User profiles (linked to auth.users)
+- `tribes` - Communities
+- `tribe_members` - Membership with roles
+- `topics` - Discussion topics (Phase 1)
+- `topic_replies` - Replies to topics (Phase 1)
+- `competitions` - Coding competitions (Phase 1)
+- `competition_participants` - Competition entries (Phase 1)
 
-* Paid event hosting
-* Hiring access tiers
-* Featured placements
-
-### For Developers
-
-* Premium analytics
-* Resume export
-* Profile visibility boost
-
----
-
-## 🚀 6. Delivery Phases (Very Important)
-
-### Phase 1 – MVP (Build This First)
-
-✅ Developer profiles
-✅ GitHub integration
-✅ Communities & topics
-✅ Basic competitions
-✅ Leaderboards
+See `supabase/migrations/` for complete schema and RLS policies.
 
 ---
 
-### Phase 2 – Growth
+## 🤝 Contributing
 
-⬜ LeetCode / HackerRank sync
-⬜ Company dashboards
-⬜ Hiring challenges
-⬜ DevCom Score v2
+We welcome contributions! HashTribe is built for **ECWoC** (Engineering College Winter of Code) and open-source contributors.
+
+### Quick Start
+
+1. Check [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
+2. Look for issues labeled `good-first-issue`
+3. Comment on an issue to get it assigned
+4. Fork, code, and submit a PR!
+
+### Issue Labels
+
+- `good-first-issue` - Perfect for newcomers
+- `frontend` - React/UI work
+- `backend` - Supabase/Database work
+- `rls` - Row Level Security policies
+- `bug` - Something isn't working
+- `enhancement` - New feature
 
 ---
 
-### Phase 3 – Scale
+## 🗺 Roadmap
 
-⬜ AI matching
-⬜ Advanced analytics
-⬜ Recruiter tools
-⬜ Global rankings
+### ✅ Phase 1 - MVP (Current)
+- [x] Project setup & architecture
+- [x] GitHub OAuth authentication
+- [x] Tribes CRUD with RLS
+- [x] Membership management
+- [ ] Topics & discussions
+- [ ] Basic competitions
+- [ ] Leaderboards
+
+### 🔜 Phase 2 - Growth
+- [ ] LeetCode/HackerRank integration
+- [ ] Company accounts
+- [ ] Hiring challenges
+- [ ] DevCom Score v2
+- [ ] Profile analytics
+
+### 🔮 Phase 3 - Scale
+- [ ] AI-powered matching
+- [ ] Advanced analytics
+- [ ] Recruiter tools
+- [ ] Global rankings
+- [ ] Mobile app
+
+See [SCOPE.md](SCOPE.md) for the complete product vision.
 
 ---
 
-## 🧠 What Makes DevCom Defensible
+## 📄 License
 
-* Proof-based profiles
-* Cross-platform skill aggregation
-* Reputation-gated community
-* Real collaboration history
-* Company-grade hiring signals
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
+
+## 🙏 Acknowledgments
+
+- Built for **ECWoC** (Engineering College Winter of Code)
+- Powered by [Supabase](https://supabase.com/)
+- UI inspired by modern developer tools
+
+---
+
+## 📞 Contact
+
+- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/HashTribe/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/HashTribe/discussions)
+
+---
+
+<div align="center">
+
+**Built with ❤️ by developers, for developers**
+
+[⭐ Star this repo](https://github.com/YOUR_USERNAME/HashTribe) if you find it useful!
+
+</div>

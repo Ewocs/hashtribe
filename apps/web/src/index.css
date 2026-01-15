@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-charcoal-700;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+
+  /* Button Styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  .btn-primary {
+    @apply btn bg-white text-black hover:bg-grey-100 focus:ring-white;
+  }
+
+  .btn-secondary {
+    @apply btn bg-charcoal-800 text-white hover:bg-charcoal-700 focus:ring-charcoal-600;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-grey-300 hover:bg-charcoal-800 hover:text-white;
+  }
+
+  .btn-danger {
+    @apply btn bg-grey-600 text-white hover:bg-grey-700 focus:ring-grey-500;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-charcoal-900 border border-charcoal-800 rounded-xl p-6 shadow-lg;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-charcoal-700 hover:shadow-xl;
+  }
+
+  /* Input Styles */
+  .input {
+    @apply w-full px-4 py-2 bg-charcoal-900 border border-charcoal-700 rounded-lg text-white placeholder-grey-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all;
+  }
+
+  .textarea {
+    @apply input resize-none;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-white/10 text-white border border-white/20;
+  }
+
+  .badge-success {
+    @apply badge bg-grey-900/50 text-grey-300 border border-grey-800;
+  }
+
+  .badge-warning {
+    @apply badge bg-grey-800/50 text-grey-200 border border-grey-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-charcoal-900/50 text-grey-300 border border-charcoal-800;
+  }
+
+  /* Link Styles */
+  .link {
+    @apply text-white hover:text-grey-300 transition-colors duration-150;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-white to-grey-300 bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-white to-grey-100;
+  }
+}
