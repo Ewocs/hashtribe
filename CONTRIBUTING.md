@@ -38,8 +38,8 @@ HashTribe is a developer-first community and collaboration platform built for EC
    # Start local Supabase instance
    pnpm supabase:start
    
-   # This will output your local Supabase credentials
-   # Copy the API URL and anon key
+   # OR for Hosted Supabase, see detailed instructions in:
+   # docs/SETUP_GUIDE.md
    ```
 
 4. **Configure Environment**

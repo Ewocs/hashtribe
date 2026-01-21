@@ -16,7 +16,7 @@ export function LoginPage() {
     const [emailLoading, setEmailLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const from = (location.state as any)?.from?.pathname || '/tribes';
+    const from = (location.state as any)?.from?.pathname || '/feed';
 
     useEffect(() => {
         if (user && !loading) {

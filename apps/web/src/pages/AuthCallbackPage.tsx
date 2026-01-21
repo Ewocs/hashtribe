@@ -8,7 +8,7 @@ export function AuthCallbackPage() {
 
     useEffect(() => {
         if (!loading && user) {
-            navigate('/tribes', { replace: true });
+            navigate('/feed', { replace: true });
         } else if (!loading && !user) {
             navigate('/login', { replace: true });
         }

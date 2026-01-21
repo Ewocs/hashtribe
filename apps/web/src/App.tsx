@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from './stores/authStore';
 import { Layout } from './components/Layout';
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -40,6 +40,10 @@ function App() {
                 {/* Protected Routes */}
                 <Route
                     path="/"
+                    element={<Navigate to="/feed" replace />}
+                />
+                <Route
+                    path="/feed"
                     element={
                         <ProtectedRoute>
                             <Layout>
@@ -128,8 +132,8 @@ function App() {
                             <div className="card text-center py-12">
                                 <h1 className="text-4xl font-bold text-white mb-4">404</h1>
                                 <p className="text-dark-400 mb-6">Page not found</p>
-                                <a href="/tribes" className="btn-primary">
-                                    Go to Tribes
+                                <a href="/feed" className="btn-primary">
+                                    Go to Feed
                                 </a>
                             </div>
                         </Layout>

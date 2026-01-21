@@ -74,12 +74,23 @@ export function TribesPage() {
             {loading ? (
                 <div className="text-center py-20">
                     <div className="w-16 h-16 border-4 border-charcoal-700 border-t-white rounded-full animate-spin mx-auto mb-6"></div>
-                    <p className="text-grey-400 font-mono animate-pulse">INITIALIZING DATA STREAM...</p>
+                    <p className="text-grey-400 font-mono animate-pulse">SCANNING FREQUENCIES...</p>
                 </div>
             ) : filteredTribes.length === 0 ? (
                 <div className="text-center py-20 border border-dashed border-charcoal-800 rounded-3xl bg-charcoal-900/30">
-                    <p className="text-2xl text-white font-bold mb-2">NO SIGNALS FOUND</p>
-                    <p className="text-grey-500 font-mono">ADJUST QUERY PARAMETERS TO RETRY</p>
+                    <div className="w-16 h-16 bg-charcoal-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span className="text-3xl">📡</span>
+                    </div>
+                    <p className="text-2xl text-white font-bold mb-2">NO SIGNALS DETECTED</p>
+                    <p className="text-grey-500 font-mono mb-8 max-w-md mx-auto">
+                        The spectrum is currently silent. Be the first to initiate a new protocol transmission.
+                    </p>
+                    <Link
+                        to="/tribes/create"
+                        className="inline-flex items-center justify-center px-8 py-3 bg-white text-black font-bold uppercase tracking-wider rounded-full hover:bg-grey-200 transition-colors"
+                    >
+                        Create Transmission
+                    </Link>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
