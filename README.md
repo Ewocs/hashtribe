@@ -8,9 +8,20 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.2-blue)](https://reactjs.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-Latest-green)](https://supabase.com/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-orange)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC)](https://tailwindcss.com/)
 
 [Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [Roadmap](#-roadmap)
 
+---
+
+</div>
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="https://via.placeholder.com/800x400/1a1a1a/ffffff?text=HashTribe+Dashboard" alt="HashTribe Dashboard" width="80%">
+  <p><em>HashTribe Dashboard - Your developer community hub</em></p>
 </div>
 
 ---
@@ -38,44 +49,48 @@ This initial release focuses on the **Tribes** (community) system with:
 
 ### Current (Phase 1)
 
-- **Authentication**: GitHub OAuth via Supabase Auth
-- **Tribes System**: Create and join developer communities
-- **Profiles**: Auto-generated from GitHub data
-- **Security**: Row Level Security (RLS) policies
-- **Responsive UI**: Dark theme, developer-centric design
+| Feature | Description |
+|---------|-------------|
+| 🔐 **Authentication** | GitHub OAuth via Supabase Auth |
+| 👥 **Tribes System** | Create and join developer communities |
+| 👤 **Profiles** | Auto-generated from GitHub data |
+| 🛡️ **Security** | Row Level Security (RLS) policies |
+| 📱 **Responsive UI** | Dark theme, developer-centric design |
 
 ### Planned (Phase 2 & 3)
 
 See [SCOPE.md](SCOPE.md) for the complete product vision including:
-- Topics & Discussions
-- Competitions & Events
-- Leaderboards & Rankings
-- DevCom Score System
-- Company Accounts
-- Project Collaboration
+- 💬 Topics & Discussions
+- 🏆 Competitions & Events
+- 📊 Leaderboards & Rankings
+- 🎯 DevCom Score System
+- 🏢 Company Accounts
+- 🤝 Project Collaboration
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Frontend
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Zustand** - State management
-- **React Router** - Routing
+- **React 18** - UI library with hooks
+- **TypeScript** - Type safety and better DX
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **Zustand** - Lightweight state management
+- **React Router** - Client-side routing
 
 ### Backend
 - **Supabase** - Backend as a Service
-  - PostgreSQL database
+  - PostgreSQL database with real-time capabilities
   - Authentication (GitHub OAuth)
   - Row Level Security (RLS)
   - Real-time subscriptions
 
-### Monorepo
-- **pnpm workspaces** - Package management
-- **Shared package** - Types and utilities
+### Development & Tooling
+- **pnpm workspaces** - Efficient package management
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Supabase CLI** - Local development
 
 ---
 
@@ -227,28 +242,28 @@ http://localhost:5173
 
 ```
 HashTribe/
-├── apps/
-│   └── web/                 # React frontend
-│       ├── src/
-│       │   ├── components/  # Reusable components
-│       │   ├── pages/       # Page components
-│       │   ├── stores/      # Zustand stores
-│       │   ├── lib/         # Utilities & config
-│       │   └── App.tsx      # Main app component
+├── 📁 apps/
+│   └── 📁 web/                 # React frontend
+│       ├── 📁 src/
+│       │   ├── 📁 components/  # Reusable components
+│       │   ├── 📁 pages/       # Page components
+│       │   ├── 📁 stores/      # Zustand stores
+│       │   ├── 📁 lib/         # Utilities & config
+│       │   └── App.tsx         # Main app component
 │       └── package.json
-├── packages/
-│   └── shared/              # Shared types & utilities
-│       ├── src/
-│       │   ├── types/       # TypeScript types
-│       │   └── utils/       # Utility functions
+├── 📁 packages/
+│   └── 📁 shared/              # Shared types & utilities
+│       ├── 📁 src/
+│       │   ├── 📁 types/       # TypeScript types
+│       │   └── 📁 utils/       # Utility functions
 │       └── package.json
-├── supabase/
-│   ├── migrations/          # Database migrations
-│   ├── seed.sql             # Seed data
-│   └── config.toml          # Supabase config
-├── .env.example             # Environment template
-├── pnpm-workspace.yaml      # Workspace config
-└── package.json             # Root package
+├── 📁 supabase/
+│   ├── 📁 migrations/          # Database migrations
+│   ├── seed.sql                # Seed data
+│   └── config.toml             # Supabase config
+├── .env.example                # Environment template
+├── pnpm-workspace.yaml         # Workspace config
+└── package.json                # Root package
 ```
 
 ---
@@ -257,25 +272,18 @@ HashTribe/
 
 ### Available Scripts
 
-```bash
-# Development
-pnpm dev              # Start dev server
-pnpm build            # Build for production
-pnpm preview          # Preview production build
-
-# Code Quality
-pnpm lint             # Run ESLint
-pnpm type-check       # Run TypeScript checks
-
-# Database
-pnpm db:types         # Generate TypeScript types from DB
-pnpm db:reset         # Reset local database
-pnpm db:migrate       # Run migrations
-
-# Supabase
-pnpm supabase:start   # Start local Supabase
-pnpm supabase:stop    # Stop local Supabase
-```
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm preview` | Preview production build |
+| `pnpm lint` | Run ESLint |
+| `pnpm type-check` | Run TypeScript checks |
+| `pnpm db:types` | Generate TypeScript types from DB |
+| `pnpm db:reset` | Reset local database |
+| `pnpm db:migrate` | Run migrations |
+| `pnpm supabase:start` | Start local Supabase |
+| `pnpm supabase:stop` | Stop local Supabase |
 
 ### Database Schema
 
@@ -305,12 +313,14 @@ We welcome contributions! HashTribe is built for **ECWoC** (Engineering College 
 
 ### Issue Labels
 
-- `good-first-issue` - Perfect for newcomers
-- `frontend` - React/UI work
-- `backend` - Supabase/Database work
-- `rls` - Row Level Security policies
-- `bug` - Something isn't working
-- `enhancement` - New feature
+| Label | Description |
+|-------|-------------|
+| `good-first-issue` | Perfect for newcomers |
+| `frontend` | React/UI work |
+| `backend` | Supabase/Database work |
+| `rls` | Row Level Security policies |
+| `bug` | Something isn't working |
+| `enhancement` | New feature |
 
 ---
 
