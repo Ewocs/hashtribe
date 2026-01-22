@@ -20,7 +20,9 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x400/1a1a1a/ffffff?text=HashTribe+Dashboard" alt="HashTribe Dashboard" width="80%">
+  <img width="1710" height="985" alt="image" src="https://github.com/user-attachments/assets/07be693e-6541-491f-8835-d38481bb23b3" />
+  <img width="1709" height="980" alt="image" src="https://github.com/user-attachments/assets/bda78013-f9f2-46ee-9b9c-0f52b857c4f6" />
+
   <p><em>HashTribe Dashboard - Your developer community hub</em></p>
 </div>
 
