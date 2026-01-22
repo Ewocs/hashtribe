@@ -7,7 +7,7 @@ import googleIcon from '@/components/assets/playstore.svg';
 import nfksIcon from '@/components/assets/nfks_logo.png';
 
 export function LoginPage() {
-    const { user, signInWithGitHub, signInWithEmail, loading } = useAuthStore();
+    const { user, signInWithGitHub, signInWithGoogle, signInWithEmail, loading } = useAuthStore();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -29,6 +29,14 @@ export function LoginPage() {
             await signInWithGitHub();
         } catch (error) {
             console.error('Login error:', error);
+        }
+    };
+
+    const handleGoogleLogin = async () => {
+        try {
+            await signInWithGoogle();
+        } catch (error) {
+            // Error handled by store
         }
     };
 
@@ -164,7 +172,12 @@ export function LoginPage() {
                         </button>
 
                         {/* Google */}
-                        <button className="bg-charcoal-900 border border-grey-800 hover:bg-grey-900 text-white rounded-lg p-3 flex items-center justify-center transition-all duration-200 hover:border-grey-600">
+                        <button
+                            onClick={handleGoogleLogin}
+                            disabled={loading}
+                            type="button"
+                            className="bg-charcoal-900 border border-grey-800 hover:bg-grey-900 text-white rounded-lg p-3 flex items-center justify-center transition-all duration-200 hover:border-grey-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
                             <img src={googleIcon} alt="Google" className="w-6 h-6" />
                         </button>
 
